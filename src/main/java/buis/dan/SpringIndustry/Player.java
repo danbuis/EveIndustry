@@ -37,7 +37,14 @@ public class Player {
 		if(truncate) {
 			blueprint.truncateEmptyStacks();
 		}
-		blueprints.set(blueprint.getId()-1, blueprint);
+		for(int i=0; i<blueprints.size(); i++) {
+			if(blueprints.get(i).getId()==blueprint.getId()) {
+				blueprints.set(i, blueprint);
+				break;
+			}
+		}
+		
+		
 		
 	}
 	
@@ -93,11 +100,34 @@ public class Player {
 	}
 
 	public Blueprint save(Blueprint blueprint) {
-		blueprint.setId(blueprints.size()+1);
+		blueprint.setId(getNextId());
 		blueprint.truncateEmptyStacks();
 		blueprints.add(blueprint);
-		return blueprint;
+		return blueprint;	
+	}
+	
+	public void deleteBlueprint(Blueprint blueprint) {
+		int index=-1;
+		for(int i=0; i<blueprints.size(); i++) {
+			if(blueprints.get(i).getId()==blueprint.getId()) {
+				index=i;
+			}
+		}
 		
+		if(index!=-1) {
+			blueprints.remove(index);
+		}
+	}
+	
+	public int getNextId() {
+		int max= -1;
+		for(Blueprint blueprint: blueprints) {
+			if(blueprint.getId()>max) {
+				max=blueprint.getId();
+			}
+		}
+		
+		return max+1;
 	}
 
 	public void addResourceStack(ResourceStack resource) {

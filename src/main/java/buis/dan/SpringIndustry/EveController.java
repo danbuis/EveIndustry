@@ -92,6 +92,24 @@ public class EveController {
 		return "redirect:/player_assets";		
 	}
 	
+	@RequestMapping(value="/delete_blueprint")
+	public String deleteBlueprint(Model model) {
+		model.addAttribute("blueprintList", player.getBlueprints());
+		model.addAttribute("player", player);
+		return "DeleteBlueprintVerify";
+	}
+	
+	@RequestMapping(value="/delete_blueprint_verify", params="cancelDelete")
+	public String cancelDeleteBlueprint() {
+		return "redirect:/player_assets";
+	}
+	
+	@RequestMapping(value="/delete_blueprint_verify", params="confirmDelete")
+	public String confirmDeleteBlueprint(@ModelAttribute Blueprint blueprint) {
+		player.deleteBlueprint(blueprint);
+		return "redirect:/player_assets";
+	}
+	
 	@RequestMapping(value="/items_purchase")
 	public String addPurchasedItems(Model model){
 		model.addAttribute("stack", new ResourceStack());

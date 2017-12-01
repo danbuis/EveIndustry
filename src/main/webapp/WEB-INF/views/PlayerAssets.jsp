@@ -35,6 +35,7 @@
 		
 		<h1>Blueprints</h1>
 		<a href="<c:url value="/new_blueprint"/>">Add Blueprint</a>
+		<a href="<c:url value="/delete_blueprint"/>">Delete Blueprint</a>
 		<table>
 		<tr>
 			<th>Name</th>
