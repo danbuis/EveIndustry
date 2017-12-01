@@ -29,7 +29,7 @@
 		<tr>
 			<td><a href="ore_refine">Refine Ores </a></td>
 			<td><a href="items_purchase">Add Purchased Items </a></td>
-			<td><a href="resource_values">Set Market Values </a></td>
+			<td><a href="nerd">Set Market Values</a></td>
 		</tr>
 		</table>
 		

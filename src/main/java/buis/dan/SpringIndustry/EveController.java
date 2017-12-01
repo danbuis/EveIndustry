@@ -102,7 +102,21 @@ public class EveController {
 	public String updateResourceStacks(@ModelAttribute ResourceStack resource){
 		logger.info("updating resource stack");
 		player.addResourceStack(resource);
+		return "redirect:/player_assets";	
+	}
+	
+	@RequestMapping(value="/nerd")
+	public String updateResourceValues(Model model) {
+		logger.info("updating market value of resources");
+		model.addAttribute("player", player);
+		return "UpdateResourceValues";
+	}
+	
+	@RequestMapping(value="/resource_update")
+	public String updateResourceValuesComplete(@ModelAttribute Player player) {
+		logger.info("update of market values complete");
+		logger.info(this.player.getResources().size()+" stacks");
+		this.player.updateResourceValues(player.getMarketValues());
 		return "redirect:/player_assets";
-		
 	}
 }
