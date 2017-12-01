@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div id="global">
-		<h1>Resources</h1>
+		<h1>Minerals and Components</h1>
 		<table>
 		<tr>
 			<th>Resource Type</th>
@@ -24,6 +24,13 @@
 			<td>${resource.value}</td>
 		</tr>
 		</c:forEach>
+		</table>
+		<table>
+		<tr>
+			<td><a href="ore_refine">Refine Ores </a></td>
+			<td><a href="items_purchase">Add Purchased Items </a></td>
+			<td><a href="resource_values">Set Market Values </a></td>
+		</tr>
 		</table>
 		
 		<h1>Blueprints</h1>

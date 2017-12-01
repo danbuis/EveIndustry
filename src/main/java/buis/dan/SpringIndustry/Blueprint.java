@@ -83,9 +83,12 @@ public class Blueprint {
 				emptyStacks++;
 			}
 		}
-		if(emptyStacks!=0) {
+		if(emptyStacks!=0 && emptyStacks!=resources.size()) {
 		this.resources= resources.subList(0, resources.size()-emptyStacks);
+		} else if(emptyStacks==resources.size()){
+			this.resources=resources.subList(0,1);
 		}
+		
 		
 	}
 	

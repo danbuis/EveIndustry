@@ -19,7 +19,7 @@ public class Player {
 	
 	public Player(Blueprint print) {
 		blueprints.add(print);
-		resources.add(new ResourceStack("Tritanium", 104350, 496706));
+		resources.add(new ResourceStack("Tritanium", 104350, 500000));
 		resources.add(new ResourceStack("Pyerite", 72420, 355238.5));
 		resources.add(new ResourceStack("Mexallon", 14670, 923996.5));
 		resources.add(new ResourceStack("Isogen", 25262, 1052920.16));
@@ -63,6 +63,22 @@ public class Player {
 		blueprints.add(blueprint);
 		return blueprint;
 		
+	}
+
+	public void addResourceStack(ResourceStack resource) {
+		boolean match=false;
+		for(ResourceStack stack:resources){
+			if(stack.getType().toUpperCase().equals(resource.getType().toUpperCase())){
+				//then we have a match
+				stack.addToStack(resource.getQuantity(), resource.getValue());
+				match=true;
+			}
+		}
+		
+		if(!match){
+			//no match found, append
+			resources.add(resource);
+		}
 	}
 
 	

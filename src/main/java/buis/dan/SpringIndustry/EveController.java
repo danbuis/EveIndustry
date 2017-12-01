@@ -83,7 +83,6 @@ public class EveController {
 			Blueprint blueprint = new Blueprint();
 			blueprint.populateResourceList();
 			model.addAttribute("blueprint", blueprint);
-			logger.info(""+blueprint.getResources().size());
 			return "NewBlueprintForm";
 	}
 	
@@ -91,5 +90,19 @@ public class EveController {
 	public String saveBlueprint(@ModelAttribute Blueprint blueprint) {
 		player.save(blueprint);
 		return "redirect:/player_assets";		
+	}
+	
+	@RequestMapping(value="/items_purchase")
+	public String addPurchasedItems(Model model){
+		model.addAttribute("stack", new ResourceStack());
+		return "AddPurchasedItems";
+	}
+	
+	@RequestMapping(value="/update_resource_stacks")
+	public String updateResourceStacks(@ModelAttribute ResourceStack resource){
+		logger.info("updating resource stack");
+		player.addResourceStack(resource);
+		return "redirect:/player_assets";
+		
 	}
 }
